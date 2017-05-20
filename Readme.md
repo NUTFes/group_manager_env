@@ -1,4 +1,4 @@
-# VagrantでRailsアプリが動く環境を作る
+# Vagrantでgroup-managerアプリが動く環境を作る
 
 ### リポジトリのクローン
 
@@ -15,11 +15,8 @@ git config --global https.proxy http://proxy.yourproxy.com:8080
 $ cd ~
 $ mkdir workspace
 $ cd workspace
-$ git clone https://github.com/ShuzoN/rails_practice.git
-$ ls 
-... rails_practice
-
-$ cd rails_practice
+$ git clone https://github.com/NUTFes/group_manager_env.git
+$ cd group_manager_env
 ```
 
 ### vagrantで仮想マシンの作成
@@ -32,7 +29,7 @@ Vagrantは``Vagrantfile``があるディレクトリでないと,
 
 ```
 $ pwd
-/Users/yourname/workspace/rails_practice
+/Users/yourname/workspace/group_manager_env
 $ ls
 ... Vagrantfile ...
 
@@ -60,23 +57,6 @@ sshを使ってゲストOSに接続
 $ vagrant ssh
 ```
 
-#### サーバ起動(ゲストOS)
+あとは, このリポジトリを見て欲しい
 
-```
-# vagrant up時にrailsのプロジェクトを作成している
-$ cd ~/rails/rails_practice
-# hostから接続するためにbindが必須
-$ bundle exec rails server --bind=0.0.0.0
-```
-
-#### ホストOSのブラウザからアクセス
-
-** ※ ホストOSのブラウザのプロキシをoffにすること! **  
-systemとは別にプロキシ設定を行える``firefox``がお勧め  
-
-
-1. ブラウザを開く(プロキシ設定をoff)
-2. ``http://192.168.56.3:3000/``にアクセス
-3. "Welcome aboard"が開けば成功
-
-
+https://github.com/NUTFes/group-manager/blob/develop/docs/setup.md
