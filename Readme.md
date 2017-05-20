@@ -1,5 +1,9 @@
 # Vagrantでgroup-managerアプリが動く環境を作る
 
+### 必要なツール
+vagrantとvirtualboxはよしなに入れてください
+バージョンは最新を使ってください
+
 ### リポジトリのクローン
 
 vagrantの設定ファイルがあるリポジトリからファイルを``git clone``
