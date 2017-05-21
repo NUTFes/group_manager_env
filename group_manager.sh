@@ -47,17 +47,17 @@ $home_path/.rbenv/shims/bundle install --path vendor/bundle
 $home_path/.rbenv/shims/bundle exec rake db:create
 $home_path/.rbenv/shims/bundle exec rake db:migrate
 $home_path/.rbenv/shims/bundle exec rake db:seed_fu
-cat /vagrant/set_env_val.sh  >> .bashrc
+cp /vagrant/set_env_val_init.sh $home_path/set_env_val.sh
+cp /vagrant/.gitignore $home_path/.gitignore
+echo 'source $HOME/set_env_val.sh'  >> $home_path/.bashrc
 source $home_path/.bashrc
 
 echo '---------------------------------------'
-echo  Success!!!  provision was done. 
-echo  you should set .bashrc ENV variables to send email. 
+echo  you should set .bashrc ENV variables to send email in ~/set_env_val.sh 
 echo  please show the repository. 
-echo  https://github.com/NUTFes/group-manager/tree/caff009bef19eb6f2b7e99a1321e31bca84451ee
+echo  https://github.com/NUTFes/group-manager
 
 echo and you want to lunch the rails server, enter it.
-echo 
 echo bundle exec rails server --bind=0.0.0.0
 echo '---------------------------------------'
 
