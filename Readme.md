@@ -1,4 +1,4 @@
-# Vagrantでgroup-managerアプリが動く環境を作る
+# group-managerアプリ開発環境
 
 ### やってること
 ``virtualbox`` という仮想マシンツールの上に, linuxを入れて  
@@ -25,11 +25,8 @@ git config --global https.proxy http://proxy.yourproxy.com:8080
 
 その後, 以下のコマンドを打つ
 ```
-$ cd ~
-$ mkdir workspace
-$ cd workspace
 $ git clone https://github.com/NUTFes/group_manager_env.git
-$ cd group_manager_env
+$ cd ./group_manager_env
 ```
 
 ### vagrantで仮想マシンの作成
@@ -48,24 +45,22 @@ $ ls
 
 $ vagrant up > log.txt
 # 30~40分くらい待つ
-# ログは./log.txtに残る
-# スリープになると厄介なので, 動画を流す等で対策
+# ログは``./log.txt``に残る
 ```
 
 あとは, 待っていれば仮想マシンが作成される.  
 
-#### ゲストOS, ホストOS
-仮想マシンで扱うOSは大体システムのOSと異なることから  
-仮想マシンのことをゲストマシン, ゲストOSと呼ぶ.  
+``vagrant up / halt / provision / ssh / destory``あたりは使うので調べると幸せになれる. 
 
-システムのOSをホストマシン, ホストOSと呼ぶ.  
+#### ゲストマシン, ホストマシン
+仮想マシン(virtual machine)をゲストマシン(ゲストOS, vm),  
+元々パソコンで動いていたマシンをホストマシン(ホストOS)と呼ぶ
 
 ### ゲストOSに接続
 
-sshを使ってゲストOSに接続
+sshを使ってゲストマシンに接続
 
 ```
-# on terminal
 # vagranfileがあるディレクトリ
 $ vagrant ssh
 ```
@@ -77,14 +72,29 @@ sshでログインした状態で
 $ bundle exec rails server --bind=0.0.0.0
 ```
 
-ホストOSのブラウザから``http://localhost:3000``に接続すればvagrant内のサーバに繋がる
+ホストマシンのブラウザから``http://localhost:3000``に接続すればvagrant内のサーバに繋がる
 ブラウザのプロキシ設定はoffにすること
 
 ### メール設定について
-``NUTFes/group-manager``では, アカウント作成時に確認メールが送信される. 
-ローカル開発環境ではサーバの環境変数を読んでるので``set_env_variable.sh``の中を編集する. 
+``NUTFes/group-manager``では, アカウント作成時に確認メールが送信される.   
+ローカル開発環境ではサーバの環境変数を読んでいる.  
+ゲストマシン内の``~/set_env_variable.sh``の中を編集する.   
+このファイルはgithubにあげるとパスワード漏れるのであげないこと  
 
-あとは, このリポジトリを見て欲しい
+### group-managerについて
 https://github.com/NUTFes/group-manager/blob/develop/docs/setup.md
 
+### vagrant の便利機能と運用
+
+vagrantは共有フォルダを自動で作成してくれる. 
+
+ホストマシンの``Vagrantfile``があるディレクトリを  
+ゲストマシンの``/vagrant``としてコピーしてくれる.  
+
+基本的には, ホスト -> ゲストの方向でファイル共有する運用がオススメ. 
+
+開発環境に影響があるファイルについてはホストマシン側でファイル編集 / git管理をして,  
+ゲストマシンは共有フォルダからファイルを読む/コピーするだけの設計にするといい. 
+
+管理するリポジトリが1つになり運用が楽になる.
 
