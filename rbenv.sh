@@ -19,10 +19,10 @@ cd ${home_path}
 echo 'export PATH=$HOME/.rbenv/bin:$PATH' >> ${home_path}/.bashrc
 echo 'eval "$(rbenv init -)"' >> ${home_path}/.bashrc
 source ${home_path}/.bashrc
-${home_path}/.rbenv/bin/rbenv rehash
 $home_path/.rbenv/shims/bundle config git.allow_insecure true
 # rbenvを利用してruby2.2.0をインストール
 sudo -E apt-get install -y libssl-dev libffi-dev libreadline-dev postgresql
 ${home_path}/.rbenv/bin/rbenv install -v 2.2.0
 ${home_path}/.rbenv/bin/rbenv global 2.2.0
 ${home_path}/.rbenv/bin/rbenv exec gem install bundler
+${home_path}/.rbenv/bin/rbenv rehash

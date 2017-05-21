@@ -1,8 +1,17 @@
 # Vagrantでgroup-managerアプリが動く環境を作る
 
+### やってること
+``virtualbox`` という仮想マシンツールの上に, linuxを入れて  
+その上に``NUTFes/group-manager``というWebアプリをビルドする.   
+``vagrant`` は自動で環境構築をやってくれるツール.  
+
+
 ### 必要なツール
 vagrantとvirtualboxはよしなに入れてください
 バージョンは最新を使ってください
+
+ * vagrant http://localhost:3000/user_details/10000014
+ * virtualbox https://www.virtualbox.org/
 
 ### リポジトリのクローン
 
