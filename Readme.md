@@ -70,6 +70,21 @@ sshを使ってゲストOSに接続
 $ vagrant ssh
 ```
 
-あとは, このリポジトリを見て欲しい
+### サーバの立て方
 
+```
+sshでログインした状態で
+$ bundle exec rails server --bind=0.0.0.0
+```
+
+ホストOSのブラウザから``http://localhost:3000``に接続すればvagrant内のサーバに繋がる
+ブラウザのプロキシ設定はoffにすること
+
+### メール設定について
+``NUTFes/group-manager``では, アカウント作成時に確認メールが送信される. 
+ローカル開発環境ではサーバの環境変数を読んでるので``set_env_variable.sh``の中を編集する. 
+
+あとは, このリポジトリを見て欲しい
 https://github.com/NUTFes/group-manager/blob/develop/docs/setup.md
+
+
