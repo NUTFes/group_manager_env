@@ -7,7 +7,7 @@ home_path="/home/vagrant"
 echo 'export PS1="\u@\h:\w\n\$ "' >> ${home_path}/.bashrc
 # プロキシ設定
 cp /vagrant/change_proxy.sh ${home_path}/.
-source ${home_path}/change_proxy.sh
+source /vagrant/change_proxy.sh
 # gcc4.9用にaptリポジトリの追加
 add-apt-repository -y ppa:ubuntu-toolchain-r/test
 apt-get update

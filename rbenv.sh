@@ -8,7 +8,7 @@ sudo -E chown -R root .git/
 sudo -E chown -R vagrant .git/
 # rubyバージョン管理ソフト rbenvの導入
 home_path="/home/vagrant"
-source ${home_path}/change_proxy.sh
+source /vagrant/change_proxy.sh
 git clone https://github.com/rbenv/rbenv.git ${home_path}/.rbenv
 cd ${home_path}/.rbenv
 mkdir shims versions plugins
